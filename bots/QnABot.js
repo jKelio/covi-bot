@@ -37,7 +37,7 @@ class QnABot extends ActivityHandler {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    await context.sendActivity('Hallo! Ich bin Covi, dein ChatBot für alle Fragen rund um Corona 🙂 Stell mir eine Frage und ich geb mein Bestens 💪!');
+                    await context.sendActivity('Hallo! Ich bin Covi, dein ChatBot für Fragen rund um den Corona Virus 🙂 Ich bin noch ganz jung und weiß daher nicht alles. Aber ich gebe mir echt Mühe und lerne jeden Tag dazu! 💪! \n\n Hast du z. B. die Befürchtung dich infiziert zu haben, kann ich dir helfen zu beurteilen, ob du wirklich zur Risikogruppe gehört!');
                 }
             }
 
