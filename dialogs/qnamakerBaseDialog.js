@@ -187,7 +187,7 @@ class QnAMakerBaseDialog extends ComponentDialog {
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0) {
                 const dialogOptions = getDialogOptionsValue(stepContext);
 
-                const previousContextData = {};
+                let previousContextData = {};
 
                 // eslint-disable-next-line no-extra-boolean-cast
                 if (!!dialogOptions[QnAContextData]) {
