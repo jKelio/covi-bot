@@ -82,6 +82,13 @@ server.post('/api/messages', (req, res) => {
     });
 });
 
+server.get('/api/environment', (req, res) => {
+    res.send({
+        environment: process.env.NODE_ENV,
+        directLineSecret: process.env.DirectLineSecret,
+    });
+});
+
 function autocorrectEndpointHostName(endpointHostName) {
 
     if (!endpointHostName.startsWith('https://')) {
