@@ -20,7 +20,8 @@
         "botbuilder-ai": "~4.7.0",
         "botbuilder-dialogs": "~4.7.0",
         "dotenv": "^8.2.0",
-        "restify": "^8.4.0"
+        "restify": "^8.4.0",
+        "restify-cors-middleware": "^1.1.1"
     },
     "devDependencies": {
         "eslint": "^6.6.0",

@@ -6,6 +6,7 @@
 // Import required packages
 const path = require('path');
 const restify = require('restify');
+const corsMiddleware = require('restify-cors-middleware')
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
@@ -20,6 +21,14 @@ require('dotenv').config({ path: ENV_FILE });
 
 // Create HTTP server.
 const server = restify.createServer();
+const cors = corsMiddleware({
+    origins: ['*'],
+    allowHeaders: [],
+    exposeHeaders: []
+})
+
+server.pre(cors.preflight)
+server.use(cors.actual)
 server.listen(process.env.port || process.env.PORT || 3978, function () {
     console.log(`\n${server.name} listening to ${server.url}.`);
     console.log('\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator');
