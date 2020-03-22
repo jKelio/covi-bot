@@ -9,7 +9,7 @@ const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 // Default parameters
 const DefaultThreshold = 0.3;
 const DefaultTopN = 3;
-const DefaultNoAnswer = 'Ups, diese Frage kann ich leider nicht beantworten :enttäuscht: Kannst du deine Frage umformulieren? Vielleicht hilft mir das ...';
+const DefaultNoAnswer = 'Ups, diese Frage kann ich leider nicht beantworten 😓 Kannst du deine Frage umformulieren? Vielleicht hilft mir das ...';
 
 // Card parameters
 const DefaultCardTitle = 'Hast du folgendes gemeint:';
