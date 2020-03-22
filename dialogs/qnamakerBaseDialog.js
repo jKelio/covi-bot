@@ -12,9 +12,9 @@ const DefaultTopN = 3;
 const DefaultNoAnswer = 'Ups, diese Frage kann ich leider nicht beantworten :enttäuscht: Kannst du deine Frage umformulieren? Vielleicht hilft mir das ...';
 
 // Card parameters
-const DefaultCardTitle = 'Did you mean:';
-const DefaultCardNoMatchText = 'None of the above.';
-const DefaultCardNoMatchResponse = 'Thanks for the feedback.';
+const DefaultCardTitle = 'Hast du folgendes gemeint:';
+const DefaultCardNoMatchText = 'Nichts davon.';
+const DefaultCardNoMatchResponse = 'Danke für dein Feedback.';
 
 // Define value names for values tracked inside the dialogs.
 const QnAOptions = 'qnaOptions';
