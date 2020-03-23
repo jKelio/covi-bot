@@ -38,9 +38,9 @@ class QnABot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
                     let welcomeText = 'Hallo! Ich bin Covi, dein ChatBot für Fragen rund um das Corona Virus 🙂';
-                    welcome += 'Ich bin noch ganz jung und weiß daher nicht alles. Aber ich gebe mir echt Mühe und lerne jeden Tag dazu! 💪! \n\n ';
-                    welcome += 'Hast du z. B. die Befürchtung dich infiziert zu haben, kann ich dir helfen zu beurteilen, ob du wirklich zur Risikogruppe gehörst!';
-                    await context.sendActivity();
+                    welcomeText += 'Ich bin noch ganz jung und weiß daher nicht alles. Aber ich gebe mir echt Mühe und lerne jeden Tag dazu! 💪! \n\n ';
+                    welcomeText += 'Hast du z. B. die Befürchtung dich infiziert zu haben, kann ich dir helfen zu beurteilen, ob du wirklich zur Risikogruppe gehörst!';
+                    await context.sendActivity(welcomeText);
                 }
             }
 
