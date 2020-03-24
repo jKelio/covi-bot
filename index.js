@@ -9,7 +9,7 @@ const restify = require('restify');
 const corsMiddleware = require('restify-cors-middleware')
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState, ActivityTypes } = require('botbuilder');
 const { QnAMaker } = require('botbuilder-ai');
 
 const { QnABot } = require('./bots/QnABot');
@@ -58,7 +58,9 @@ adapter.onTurnError = async (context, error) => {
     );
 
     // Send a message to the user
+    await context.sendActivity({ type: ActivityTypes.Typing });
     await context.sendActivity('Oh, da ist leider ein Fehler passiert');
+    await context.sendActivity({ type: ActivityTypes.Typing });
     await context.sendActivity('Bitte wende dich an den Support, irgendetwas ist falsch gelaufen.');
 };
 

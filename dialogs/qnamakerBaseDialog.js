@@ -3,6 +3,7 @@ const {
     DialogTurnStatus,
     WaterfallDialog
 } = require('botbuilder-dialogs');
+const { ActivityTypes } = require('botbuilder');
 
 const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 
@@ -109,6 +110,7 @@ class QnAMakerBaseDialog extends ComponentDialog {
                 response.answers.forEach(element => {
                     suggestedQuestions.push(element.questions[0]);
                 });
+                await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
                 const qnaDialogResponseOptions = dialogOptions[QnADialogResponseOptions];
                 const message = QnACardBuilder.GetSuggestionCard(suggestedQuestions, qnaDialogResponseOptions.activeLearningCardTitle, qnaDialogResponseOptions.cardNoMatchText);
                 await stepContext.context.sendActivity(message);
@@ -160,6 +162,7 @@ class QnAMakerBaseDialog extends ComponentDialog {
 
                 return await stepContext.next(qnaResults);
             } else if (reply === qnaDialogResponseOptions.cardNoMatchText) {
+                await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
                 await stepContext.context.sendActivity(qnaDialogResponseOptions.cardNoMatchResponse);
                 return await stepContext.endDialog();
             } else {
@@ -203,6 +206,7 @@ class QnAMakerBaseDialog extends ComponentDialog {
                 stepContext.activeDialog.state.options = dialogOptions;
 
                 // Get multi-turn prompts card activity.
+                await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
                 const message = QnACardBuilder.GetQnAPromptsCard(answer);
                 await stepContext.context.sendActivity(message);
 
@@ -223,6 +227,7 @@ class QnAMakerBaseDialog extends ComponentDialog {
         const reply = stepContext.context.activity.text;
 
         if (reply === qnaDialogResponseOptions.cardNoMatchText) {
+            await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
             await stepContext.context.sendActivity(qnaDialogResponseOptions.cardNoMatchResponse);
             return await stepContext.endDialog();
         }
@@ -235,8 +240,10 @@ class QnAMakerBaseDialog extends ComponentDialog {
         const responses = stepContext.result;
         if (responses != null) {
             if (responses.length > 0) {
+                await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
                 await stepContext.context.sendActivity(responses[0].answer);
             } else {
+                await stepContext.context.sendActivity({ type: ActivityTypes.Typing });
                 await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
             }
         }

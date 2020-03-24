@@ -1,4 +1,4 @@
-const { ActivityHandler } = require('botbuilder');
+const { ActivityHandler, ActivityTypes } = require('botbuilder');
 
 /**
  * A simple bot that responds to utterances with answers from QnA Maker.
@@ -40,6 +40,7 @@ class QnABot extends ActivityHandler {
                     let welcomeText = 'Hallo! Ich bin Covi, dein ChatBot für Fragen rund um das Corona Virus 🙂';
                     welcomeText += 'Ich bin noch ganz jung und weiß daher nicht alles. Aber ich gebe mir echt Mühe und lerne jeden Tag dazu! 💪! \n\n ';
                     welcomeText += 'Hast du z. B. die Befürchtung dich infiziert zu haben, kann ich dir helfen zu beurteilen, ob du wirklich zur Risikogruppe gehörst!';
+                    await context.sendActivity({ type: ActivityTypes.Typing });
                     await context.sendActivity(welcomeText);
                 }
             }
